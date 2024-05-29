@@ -1,15 +1,41 @@
 @extends('dashboard')
 
 @section('contentdashboard')
+
 <div class="flex p-8 bg-white max-md:hidden">
   <div class="w-full flex flex-col">
-    <div>
-      <h1 class="text-3xl font-bold p-4">Riwayat</h1>
+    <div id="modalContainer"></div>
+
+    <div class="flex justify-between">
+      <div>
+        <h1 class="text-3xl font-bold p-4">Riwayat</h1>
+      </div>
+      <div class="flex h-full items-center">
+        <button type="button" class="bg-primary_btn hover:bg-hover_btn text-white px-4 py-2 rounded-lg" id="openModalButton">Tambah Gambar</button>
+      </div>
+      <script>
+        function openModal() {
+          document.getElementById('myModal').style.display = 'block';
+        }
+
+        function closeModal() {
+          document.getElementById('myModal').style.display = 'none';
+        }
+
+        document.getElementById('openModalButton').addEventListener('click', function() {
+          fetch("{{ route('modal.content') }}")
+            .then(response => response.text())
+            .then(html => {
+              document.getElementById('modalContainer').innerHTML = html;
+              openModal();
+            });
+        });
+      </script>
     </div>
     <div class="flex flex-col gap-8">
-      <div class="bg-white shadow-xl h-96 w-full flex rounded-lg p-4 gap-8">
-        <img class="rounded-xl" src="{{ asset('images/dummy1.png') }}" alt="satu">
-        <div class="flex flex-col justify-between h-full">
+      <div class="bg-white shadow-xl w-full flex rounded-lg p-4 gap-8">
+        <img class="rounded-xl w-72 h-72" src="{{ asset('images/dummy1.png') }}" alt="satu">
+        <div class="flex flex-col justify-between">
           <div>
             <h1 class="text-2xl font-bold">Informasi</h1>
             <p class="text-lg">Tanggal: <?php echo date('Y-m-d'); ?></p>
@@ -24,9 +50,9 @@
           </div>
         </div>
       </div>
-      <div class="bg-white shadow-xl h-96 w-full flex rounded-lg p-4 gap-8">
-        <img class="rounded-xl" src="{{ asset('images/dummy2.png') }}" alt="satu">
-        <div class="flex flex-col justify-between h-full">
+      <div class="bg-white shadow-xl w-full flex rounded-lg p-4 gap-8">
+        <img class="rounded-xl w-72 h-72" src="https://gizianfuzskcultaqcsz.supabase.co/storage/v1/object/public/bucket-test-1/otitis-media/20240528163119.png" alt="satu">
+        <div class="flex flex-col justify-between">
           <div>
             <h1 class="text-2xl font-bold">Informasi</h1>
             <p class="text-lg">Tanggal: <?php echo date('Y-m-d'); ?></p>
@@ -54,8 +80,8 @@
     </div>
     <div class="flex flex-col gap-8">
       <div class="bg-white shadow-xl w-full flex flex-col rounded-lg p-4 gap-8">
-        <img class="rounded-xl" src="{{ asset('images/dummy1.png') }}" alt="satu">
-        <div class="flex flex-col justify-between h-full">
+        <img class="rounded-xl w-72 h-72" src="{{ asset('images/dummy1.png') }}" alt="satu">
+        <div class="flex flex-col justify-between">
           <div>
             <h1 class="text-2xl font-bold">Informasi</h1>
             <p class="text-lg">Tanggal: <?php echo date('Y-m-d'); ?></p>
@@ -71,8 +97,8 @@
         </div>
       </div>
       <div class="bg-white shadow-xl w-full flex flex-col rounded-lg p-4 gap-8">
-        <img class="rounded-xl" src="{{ asset('images/dummy2.png') }}" alt="satu">
-        <div class="flex flex-col justify-between h-full">
+        <img class="rounded-xl w-72 h-72" src="{{ asset('images/dummy2.png') }}" alt="satu">
+        <div class="flex flex-col justify-between">
           <div>
             <h1 class="text-2xl font-bold">Informasi</h1>
             <p class="text-lg">Tanggal: <?php echo date('Y-m-d'); ?></p>
