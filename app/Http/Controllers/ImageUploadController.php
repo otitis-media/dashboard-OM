@@ -51,6 +51,7 @@ class ImageUploadController extends Controller
 
     // Get the uploaded file
     $file = $request->file('gambar');
+    date_default_timezone_set('Asia/Jakarta');
     $filePath = 'otitis-media/' . date('YmdHis') . '.' . $file->getClientOriginalExtension(); // Adjust folder path as needed
 
     // Read file content
@@ -68,6 +69,10 @@ class ImageUploadController extends Controller
       'body' => $fileContent
     ]);
 
+    $prediksi = (string) rand(0, 4);
+    if ($prediksi == 0)
+      $prediksi = "Normal";
+
     if ($response->getStatusCode() === 200) {
       // Save the image details to the database
       $dataOM = new dataOM();
@@ -75,6 +80,7 @@ class ImageUploadController extends Controller
       $dataOM->date = now();
       $dataOM->deskripsi = $request->input('deskripsi');
       $dataOM->gambar = $filePath;
+      $dataOM->prediksi = $prediksi;
       $dataOM->save();
 
       return redirect()->back()->with('success', 'Sukses menambahkan gambar');

@@ -10,6 +10,7 @@ use App\Http\Controllers\ImageUploadController;
 Route::middleware(['auth'])->group(function () {
   Route::get('/', [HomeController::class, 'index'])->name('home');
   Route::get('/history', [HomeController::class, 'history'])->name('history');
+  Route::post('/history/{id}', [HomeController::class, 'delete'])->name('history.delete');
 });
 
 // Authentication Routes
@@ -26,7 +27,7 @@ Route::view('/upload-form', 'upload');
 
 // Modal
 Route::get('/modal/content', function () {
-  return view('modals.my_modal');
+  return view('modals.add_gambar');
 })->name('modal.content');
 
 // Add gambar

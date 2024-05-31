@@ -19,6 +19,7 @@ class CreateDataOMsTable extends Migration
       $table->text('deskripsi');
       $table->string('gambar');
       $table->date('date');
+      $table->string('prediksi');
       $table->timestamps();
     });
   }
