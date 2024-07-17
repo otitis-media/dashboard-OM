@@ -22,6 +22,7 @@ class HomeController extends Controller
   public function delete($id)
   {
     $data = dataOM::find($id); // Find the data by ID
+//    dd($data);
     $data->delete(); // Delete the data
 
     return redirect()->route('history'); // Redirect to the history route

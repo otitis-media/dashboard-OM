@@ -32,3 +32,18 @@ Route::get('/modal/content', function () {
 
 // Add gambar
 Route::post('add-gambar', [ImageUploadController::class, 'addGambar'])->name('modals.add-gambar');
+
+
+Route::get('/debug-env', function () {
+    $supabaseUrl = env('SUPABASE_URL');
+    $supabaseBucket = env('SUPABASE_BUCKET');
+    $filePath = 'your-file-path-here'; // Replace this with the actual file path or a test value
+
+    $fullUrl = $supabaseUrl . '/storage/v1/object/' . $supabaseBucket . '/' . $filePath;
+
+    return response()->json([
+        'SUPABASE_URL' => $supabaseUrl,
+        'SUPABASE_BUCKET' => $supabaseBucket,
+        'Full_URL' => $fullUrl,
+    ]);
+});

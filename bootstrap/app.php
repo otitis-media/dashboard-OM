@@ -11,7 +11,9 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
-        //
+        $middleware->validateCsrfTokens(except: [
+            'upload',  // Add the route you want to exclude from CSRF protection
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //

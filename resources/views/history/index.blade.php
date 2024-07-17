@@ -52,7 +52,7 @@
               <button class="bg-primary_btn hover:bg-hover_btn text-white px-4 py-2 rounded-lg">Edit</button>
               <form action="{{ route('history.delete', $item->id) }}" method="POST">
                 @csrf
-                @method('DELETE')
+                @method('POST')
                 <button type="submit" class="bg-red-500 hover:bg-red-800 text-white px-4 py-2 rounded-lg">Hapus</button>
               </form>
             </div>
