@@ -47,3 +47,7 @@ Route::get('/debug-env', function () {
         'Full_URL' => $fullUrl,
     ]);
 });
+
+
+// realll flask
+Route::post('/upload1', [ImageUploadController::class, 'upload1']);

@@ -13,6 +13,7 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withMiddleware(function (Middleware $middleware) {
         $middleware->validateCsrfTokens(except: [
             'upload',  // Add the route you want to exclude from CSRF protection
+	    'upload1',
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
